@@ -16,7 +16,7 @@ public class ResponseConsts {
 
     public static final String RESP_NO_SKILL = "这个技能在学习中";
 
-    public static final String RESP_NOT_IMPLEMENT = "该功能暂未实现";
+    public static final String RESP_NOT_IMPLEMENT = "该功能待开发哦";
 
     public static final String RESP_TEXT = "respText";
 
