@@ -20,7 +20,6 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
  * @ClassName KafkaConsumerConfig
  * @Description	Kafka消费者配置信息
  * @Author jzy
- * @Date 2018年5月29日
  */
 @Configuration
 @EnableKafka

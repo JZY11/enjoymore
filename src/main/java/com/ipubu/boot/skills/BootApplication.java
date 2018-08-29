@@ -18,7 +18,6 @@ import com.lenovo.cui.skills.morefun.smarthome.SmartHomeFactory;
  * @ClassName BootApplication
  * @Description
  * @Author jzy
- * @Date 2018年8月29日
  */
 @ServletComponentScan
 @SpringBootApplication
