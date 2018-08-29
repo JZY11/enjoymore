@@ -10,9 +10,9 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
 
-import com.lenovo.cui.skills.base.framework.BeanContainer;
-import com.lenovo.cui.skills.morefun.constant.Version;
-import com.lenovo.cui.skills.morefun.smarthome.SmartHomeFactory;
+import com.ipubu.boot.skills.base.framework.BeanContainer;
+import com.ipubu.boot.skills.enjoymore.constant.Version;
+import com.ipubu.boot.skills.enjoymore.smarthome.SmartHomeFactory;
 
 /**
  * @ClassName BootApplication
