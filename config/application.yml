@@ -1,0 +1,42 @@
+# 配置信息
+enjoymore:
+  host: http://171.208.147.155:6305
+version: v1
+server:
+  port: 6104
+  timeout: 6
+  servlet:
+     context-path: /
+logging:
+  file: ./log/home_enjoymore.log
+  level:
+    root: info
+    com.lenovo.cui.skills: debug
+  
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  devtools:
+    restart:
+      enabled: true
+  data:
+    mongodb:
+      uri: mongodb://10.120.112.59:8017/cui?maxPoolSize=200
+    elasticsearch: #ElasticsearchProperties
+      cluster-name: elasticsearch #默认即为elasticsearch
+      host: 10.128.130.243  #配置es节点信息，逗号分隔，如果没有指定，则启动ClientNode
+      port: 9300
+  kafka:
+    bootstrap:
+      servers: 10.120.112.25:9092,10.120.112.26:9092,10.120.112.27:9092
+    consumer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      group-id: cui.smarthome.datasync.
+      auto-offset-reset: latest
+      enable-auto-commit: true
+      auto-commit-interval: 100
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        
