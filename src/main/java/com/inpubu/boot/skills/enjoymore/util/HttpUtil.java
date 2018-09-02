@@ -58,6 +58,18 @@ public class HttpUtil {
             RequestEntity entity = new StringRequestEntity(encryptStr, "application/json", "UTF-8");
             method.setRequestEntity(entity);
 
+            // 通过请求对象获取响应对象
+            int resp = client.executeMethod(method);
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug("response content:{}", resp);
+            }
+
+            // 判断网络连接状态码是否正常(0--200都数正常)
+            if (resp == HttpStatus.SC_OK) {
+                InputStream inputStream = method.getResponseBodyAsStream();
+                result = IOUtils.toString(inputStream, "UTF-8");
+            }
+
             return result;
         } finally {
             // 释放连接
