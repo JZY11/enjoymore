@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 import com.ipubu.boot.skills.enjoymore.constant.GlobalConsts;
 
 /**
- * @ClassName BootApplication
+ * @ClassName CryptUtil
  * @Description		数据加解密工具类
  * @Author jzy
  */
