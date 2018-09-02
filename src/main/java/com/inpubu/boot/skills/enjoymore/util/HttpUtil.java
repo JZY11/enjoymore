@@ -50,6 +50,13 @@ public class HttpUtil {
             byte[] encrypt = CryptUtil.me().encrypt(request.getBytes("utf-8"), GlobalConsts.APPKEY);
             String encryptStr = Base64.encodeBase64String(encrypt);
 
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug("post content encryptStr:{}", encryptStr);
+            }
+
+            // 设置请求体参数
+            RequestEntity entity = new StringRequestEntity(encryptStr, "application/json", "UTF-8");
+            method.setRequestEntity(entity);
 
             return result;
         } finally {
