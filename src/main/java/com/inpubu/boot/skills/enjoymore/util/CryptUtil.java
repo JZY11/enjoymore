@@ -73,6 +73,15 @@ public class CryptUtil {
         return keyBytes128;
     }
 
+    /**
+     * 自动生成128密钥
+     */
+    public byte[] getAESKey() throws NoSuchAlgorithmException {
+        KeyGenerator kg = KeyGenerator.getInstance("AES");
+        kg.init(SECURE_KEY_LENGTH);// 要生成多少位，只需要修改这里即可128, 192或256
+        SecretKey sk = kg.generateKey();
+        return sk.getEncoded();
+    }
 
     /**
      * 采用AES128加密
@@ -104,6 +113,26 @@ public class CryptUtil {
         return mac.doFinal(src.getBytes());
     }
 
+    /**
+     * 利用java原生的摘要实现SHA256加密
+     * 
+     * @param str 加密后的报文
+     * @return
+     */
+    public static String getSHA256StrJava(String str) {
+        MessageDigest messageDigest;
+        String encodeStr = "";
+        try {
+            messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update(str.getBytes("UTF-8"));
+            encodeStr = byte2Hex(messageDigest.digest());
+        } catch (NoSuchAlgorithmException e) {
+            LOGGER.error(e.getMessage(), e);
+        } catch (UnsupportedEncodingException e) {
+            LOGGER.error(e.getMessage(), e);
+        }
+        return encodeStr;
+    }
 
     /**
      * 将byte转为16进制
