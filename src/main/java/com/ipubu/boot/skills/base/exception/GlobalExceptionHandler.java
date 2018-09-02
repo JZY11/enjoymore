@@ -37,6 +37,21 @@ public class GlobalExceptionHandler {
         return response(text);
     }
 
+
+    @ExceptionHandler(value = RuntimeException.class)
+    @ResponseBody
+    public JSONObject businessErrorHandler(HttpServletRequest req, RuntimeException e) {
+        LOGGER.error("catch RuntimeException,request url:{}", req.getRequestURL(), e);
+        return response(text);
+    }
+
+    @ExceptionHandler(value = SmartHomeException.class)
+    @ResponseBody
+    public JSONObject smartHomeErrorHandler(HttpServletRequest req, SmartHomeException e) {
+        LOGGER.error("catch SmartHomeException,request url:{}", req.getRequestURL(), e);
+        return response(text);
+    }
+
     private JSONObject response(final String text) {
         // 返回错误信息
         JSONObject response = null;
