@@ -35,7 +35,7 @@ public class BeanContainer implements ApplicationContextAware {
         return applicationContext;
     }
 
-    // 通过name获取 Bean.
+    // 通过name获取 Bean.   以下的三个重载的方法是因为ApplicationContext  这个接口对象有继承BeanFactory接口
     public static Object getBean(String name) {
         return getApplicationContext().getBean(name);
     }
