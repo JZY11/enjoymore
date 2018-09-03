@@ -66,6 +66,11 @@ public class MoreFunIotService extends AbstractPlatformService implements DataSy
 
         final String userId = aLinked.getUserId();
 
+        // 判断是否为解绑
+        if (isInvalidPara(aLinked.getUsername())) {
+            dissociateAccount(userId);
+            return;
+        }
 
         AccountLinked orginalALinked = morefunService.getAccountLinked(userId);
         // 判断用户是否已经绑定过
@@ -96,6 +101,28 @@ public class MoreFunIotService extends AbstractPlatformService implements DataSy
         LOGGER.info("账户:{} 关联完毕。", userId);
     }
 
+    /**
+     * 解除绑定
+     * 
+     * @param userId
+     */
+    public void dissociateAccount(final String userId) {
+
+        LOGGER.info("账户({})请求解绑.", userId);
+        // 删除账户关联信息
+        long delALinkedCount = morefunService.removeAccountLinked(userId);
+        LOGGER.info("删除账户({})关联信息,删除结果:{}.", userId, delALinkedCount);
+
+        // 删除账户基本信息
+        long delAInfoCount = morefunService.removeAccountInfo(userId);
+        LOGGER.info("删除账户({})基本信息,删除结果:{}.", userId, delAInfoCount);
+
+        // 删除账户设备信息
+        long delADeviceCount = morefunService.removeAccountDevice(userId);
+        LOGGER.info("删除账户({})设备信息,删除结果:{}.", userId, delADeviceCount);
+
+        LOGGER.info("账户({})解绑成功.", userId);
+    }
 
 
 }
