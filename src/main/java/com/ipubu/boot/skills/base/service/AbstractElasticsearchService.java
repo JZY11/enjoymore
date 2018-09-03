@@ -49,7 +49,7 @@ public abstract class AbstractElasticsearchService {
     private static TransportClient client;
 
     /**
-     * @PostContruct是spring框架的注解 spring容器初始化的时候执行该方法，
+     * @PostContruct是spring框架的注解 spring容器初始化的时候执行该方法，@PostConstruct将在依赖注入完成后被自动调用
      */
     @PostConstruct
     public void init() {
