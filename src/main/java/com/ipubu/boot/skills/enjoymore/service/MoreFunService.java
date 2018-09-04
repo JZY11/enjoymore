@@ -155,4 +155,21 @@ public class MoreFunService extends AbstractPlatformService {
 
         return delResult.getDeletedCount();
     }
+
+    /**
+     * 删除用户基本信息
+     * 
+     * @param userId
+     */
+    public long removeAccountInfo(String userId) {
+        // 查询用户下的设备信息
+        Query query = new Query();
+        // 条件
+        Criteria criteria1 = Criteria.where(P_USERID).is(userId);
+        query.addCriteria(criteria1);
+
+        DeleteResult delResult = mongoTemplate.remove(query, AccountInfo.class);
+
+        return delResult.getDeletedCount();
+    }
 }
