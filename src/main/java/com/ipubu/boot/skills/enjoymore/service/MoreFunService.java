@@ -172,4 +172,30 @@ public class MoreFunService extends AbstractPlatformService {
 
         return delResult.getDeletedCount();
     }
+
+    /**
+     * 保存账户设备
+     * 
+     * @param userId
+     */
+    public long removeAccountDevice(String userId) {
+        // 查询用户下的设备信息
+        Query query = new Query();
+
+        // 条件
+        Criteria criteria1 = Criteria.where(P_USERID).is(userId);
+        query.addCriteria(criteria1);
+
+        DeleteResult delResult = mongoTemplate.remove(query, DeviceScene.class);
+
+        return delResult.getDeletedCount();
+    }
+
+    public List<CustomDeviceScene> getAccountDevice(String userId, String deviceType) {
+        return null;
+    }
+
+    public JSONObject getDeviceScene(String deviceType) {
+        return null;
+    }
 }
