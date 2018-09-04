@@ -130,4 +130,29 @@ public class MoreFunService extends AbstractPlatformService {
         mongoTemplate.save(accountInfo);
     }
 
+    /**
+     * 更新账户关联信息
+     * 
+     * @param accountLinked
+     */
+    public void saveAccountLinked(AccountLinked accountLinked) {
+        mongoTemplate.save(accountLinked);
+    }
+
+    /**
+     * 删除用户关联信息
+     * 
+     * @param userId
+     */
+    public long removeAccountLinked(String userId) {
+        // 查询用户下的设备信息
+        Query query = new Query();
+        // 条件
+        Criteria criteria1 = Criteria.where(P_USERID).is(userId);
+        query.addCriteria(criteria1);
+
+        DeleteResult delResult = mongoTemplate.remove(query, AccountLinked.class);
+
+        return delResult.getDeletedCount();
+    }
 }
