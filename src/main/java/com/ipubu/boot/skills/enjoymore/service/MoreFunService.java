@@ -62,4 +62,45 @@ public class MoreFunService extends AbstractPlatformService {
         return mongoTemplate.findOne(query, AccountLinked.class);
     }
 
+    /**
+     * 获取userId
+     * 
+     * @param thirdAccount
+     * @return
+     */
+    public String getUserId(String thirdAccount) {
+
+        Query query = new Query();
+        // 条件
+        Criteria criteria1 = Criteria.where("username").is(thirdAccount);
+        query.addCriteria(criteria1);
+
+        AccountLinked aLinked = mongoTemplate.findOne(query, AccountLinked.class);
+
+        if (Objects.nonNull(aLinked)) {
+            return aLinked.getUserId();
+        }
+
+        return "";
+
+    }
+
+    /**
+     * 根据userId和场景名称获取AccountScene
+     *
+     * @param userId
+     * @return
+     */
+    public AccountScene getAccountScene(String userId,String sceneName) {
+
+        Query query = new Query();
+        // 条件
+        Criteria criteria = new Criteria();
+        criteria.and("userId").is(userId);
+        criteria.and("sceneName").is(sceneName);
+        query.addCriteria(criteria);
+        return mongoTemplate.findOne(query, AccountScene.class);
+
+    }
+
 }
