@@ -103,4 +103,31 @@ public class MoreFunService extends AbstractPlatformService {
 
     }
 
+
+    /**
+     * 根据userId和修改前设备名获取对象
+     *
+     * @param userId
+     * @return
+     */
+    public CustomDeviceScene getCustomDeviceScene(String userId,String beforeModifyDeviceName) {
+
+        Query query = new Query();
+        // 条件
+        Criteria criteria = new Criteria();
+        criteria.and("userId").is(userId);
+        criteria.and("beforeModifyDeviceName").is(beforeModifyDeviceName);
+        query.addCriteria(criteria);
+        return mongoTemplate.findOne(query, CustomDeviceScene.class);
+
+    }
+    /**
+     * 更新账户基本信息
+     * 
+     * @param accountInfo
+     */
+    public void saveAccountInfo(AccountInfo accountInfo) {
+        mongoTemplate.save(accountInfo);
+    }
+
 }
