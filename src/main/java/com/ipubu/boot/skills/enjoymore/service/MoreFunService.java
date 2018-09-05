@@ -226,4 +226,31 @@ public class MoreFunService extends AbstractPlatformService {
         }
 
     }
+
+    /***
+     * 删除AccountScene
+     * @param accountScene
+     */
+    @Transactional
+    public void deleteAccountScene(AccountScene accountScene,ESCustomName esCustomName){
+        try {
+            AccountScene accountScene1 = null;
+            if (Objects.nonNull(accountScene)) {
+                String userId = this.getUserId(accountScene.getThirdAccount());
+                accountScene1 = this.getAccountScene(userId,accountScene.getSceneName());
+                if(Objects.nonNull(accountScene1)){
+                    Query query = new Query();
+                    Criteria criteria = new Criteria();
+                    criteria.and("sceneName").is(accountScene1.getSceneName());
+                    criteria.and("userId").is(accountScene1.getUserId());
+                    query.addCriteria(criteria);
+                    mongoTemplate.remove(query,AccountScene.class);
+                    elasticsearchService.deleteCustomName(esCustomName,accountScene1.getId());
+                }
+            }
+
+        } catch (Exception e) {
+            LOGGER.error("AccountScene 从mongodb里面删除错误:{}", e);
+        }
+    }
 }
