@@ -282,4 +282,30 @@ public class MoreFunService extends AbstractPlatformService {
         }
 
     }
+
+    /***
+     * 删除CustomDeviceScene
+     * @param customDeviceScene
+     */
+    public void deleteCustomDeviceScene(CustomDeviceScene customDeviceScene, ESCustomName esCustomName){
+        try {
+            CustomDeviceScene customDeviceScene1 = null;
+            if (Objects.nonNull(customDeviceScene)) {
+                String userId = this.getUserId(customDeviceScene.getThirdAccount());
+                customDeviceScene1 = this.getCustomDeviceScene(userId,customDeviceScene.getBeforeModifyDeviceName());
+                if(Objects.nonNull(customDeviceScene1)){
+                    Query query = new Query();
+                    Criteria criteria = new Criteria();
+                    criteria.and("beforeModifyDeviceName").is(customDeviceScene1.getBeforeModifyDeviceName());
+                    criteria.and("userId").is(customDeviceScene1.getUserId());
+                    query.addCriteria(criteria);
+                    mongoTemplate.remove(customDeviceScene1);
+                    elasticsearchService.deleteCustomName(esCustomName,customDeviceScene1.getId());
+                }
+            }
+
+        } catch (Exception e) {
+            LOGGER.error("AccountScene 从mongodb里面删除错误:{}", e);
+        }
+    }
 }
