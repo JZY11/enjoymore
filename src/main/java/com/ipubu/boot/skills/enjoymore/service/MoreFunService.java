@@ -253,4 +253,33 @@ public class MoreFunService extends AbstractPlatformService {
             LOGGER.error("AccountScene 从mongodb里面删除错误:{}", e);
         }
     }
+
+    /***
+     * 保存CustomDeviceScene
+     * @param customDeviceScene
+     * @param isUpdate
+     */
+    public void saveCustomDeviceScene(CustomDeviceScene customDeviceScene, ESCustomName esCustomName, boolean isUpdate){
+        try {
+            if(Objects.nonNull(customDeviceScene)){
+                if(isUpdate){
+                    String userId = this.getUserId(customDeviceScene.getThirdAccount());
+                    CustomDeviceScene customDeviceScene1 = this.getCustomDeviceScene(userId,customDeviceScene.getBeforeModifyDeviceName());
+                    if(Objects.nonNull(customDeviceScene1)){
+                        customDeviceScene.setId(customDeviceScene1.getId());
+                    }
+                }else {
+                    customDeviceScene.setId(new ObjectId().toHexString());
+                }
+                if(StringUtils.isNotEmpty(customDeviceScene.getId())){
+
+                    mongoTemplate.save(customDeviceScene);
+                    elasticsearchService.saveESCustomName(esCustomName,isUpdate,customDeviceScene.getId());
+                }
+            }
+        } catch (Exception e) {
+            LOGGER.error("AccountScene 保存到出现错误:{}", e);
+        }
+
+    }
 }
