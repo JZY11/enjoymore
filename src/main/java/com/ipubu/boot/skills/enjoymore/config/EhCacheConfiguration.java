@@ -20,7 +20,7 @@ import net.sf.ehcache.config.CacheConfiguration;
  */
 
 @Configuration
-@EnableCaching
+@EnableCaching		// springboot开启对缓存的支持
 public class EhCacheConfiguration implements CachingConfigurer {
 
     @Bean(destroyMethod = "shutdown")
