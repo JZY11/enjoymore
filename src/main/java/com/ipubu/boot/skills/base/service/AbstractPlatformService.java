@@ -68,4 +68,31 @@ public abstract class AbstractPlatformService {
 
         return new AccountLinked(userId, username, pword);
     }
+
+    public Query buildAccountLinkedQuery(final String userId) {
+
+        Query query = new Query();
+
+        if (isValidPara(userId)) {
+            // 条件
+            Criteria criteria1 = Criteria.where("userId").is(userId);
+            query.addCriteria(criteria1);
+        }
+        return query;
+    }
+
+    public Query buildQuery(Map<String, Object> map) {
+
+        Query query = new Query();
+
+        if (map != null && !map.isEmpty()) {
+            final String userId = String.valueOf(map.get(P_USERID));
+            // 条件
+            Criteria criteria1 = Criteria.where("userId").is(userId);
+            if (isValidPara(userId) && !"null".equalsIgnoreCase(userId)) {
+                query.addCriteria(criteria1);
+            }
+        }
+        return query;
+    }
 }
