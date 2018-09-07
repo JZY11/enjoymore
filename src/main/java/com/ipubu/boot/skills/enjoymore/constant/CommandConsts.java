@@ -450,4 +450,95 @@ public class CommandConsts {
 		return SMARTSOCKETS.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 智能灯具
+	 */
+	private static final Map<String, String> INTELLIGHTS = new ConcurrentHashMap<>();
+
+	static {
+
+		INTELLIGHTS.put("", "关");
+		INTELLIGHTS.put("", "开");
+		INTELLIGHTS.put("", "up");
+		INTELLIGHTS.put("", "down");
+		INTELLIGHTS.put("", "挂机");
+
+		// 指令名称
+		INTELLIGHTS.put("", "亮度等级");
+		INTELLIGHTS.put("", "绿色值");
+		INTELLIGHTS.put("", "蓝色值");
+		INTELLIGHTS.put("", "恢复默认");
+		INTELLIGHTS.put("", "渐变延时");
+		INTELLIGHTS.put("", "红色值");
+		INTELLIGHTS.put("", "场景控制");
+		INTELLIGHTS.put("", "开关");
+		INTELLIGHTS.put("", "色温等级");
+		INTELLIGHTS.put("", "场景设置");
+	}
+
+	/**
+	 * 智能灯具参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getINTELLIGHTSValue(final String code) {
+		return INTELLIGHTS.getOrDefault(code, ERROR);
+	}
+
+	/**
+	 * 智能窗帘
+	 */
+	private static final Map<String, String> INTELCURTAIN = new ConcurrentHashMap<>();
+
+	static {
+
+		INTELCURTAIN.put("", "关");
+		INTELCURTAIN.put("", "开");
+		INTELCURTAIN.put("", "up");
+		INTELCURTAIN.put("", "down");
+		INTELCURTAIN.put("", "停");
+
+		// 指令名称
+		INTELCURTAIN.put("", "开关2");
+		INTELCURTAIN.put("", "程度");
+		INTELCURTAIN.put("", "开关");
+	}
+
+	/**
+	 * 智能窗帘参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getINTELCURTAINValue(final String code) {
+		return INTELCURTAIN.getOrDefault(code, ERROR);
+	}
+
+	/**
+	 * 智能车载后视镜
+	 */
+	private static final Map<String, String> INTELVEHICLEREARVIEW = new ConcurrentHashMap<>();
+
+	static {
+
+		INTELVEHICLEREARVIEW.put("", "关");
+		INTELVEHICLEREARVIEW.put("", "开");
+
+		// 指令名称
+		INTELVEHICLEREARVIEW.put("", "开启声控");
+		INTELVEHICLEREARVIEW.put("", "开启音乐");
+		INTELVEHICLEREARVIEW.put("", "开启导航");
+	}
+
+	/**
+	 * 智能车载后视镜参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getINTELVEHICLEREARVIEWValue(final String code) {
+		return INTELVEHICLEREARVIEW.getOrDefault(code, ERROR);
+	}
+
 }
