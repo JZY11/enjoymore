@@ -120,4 +120,68 @@ public class CommandConsts {
 		WATERPURIFIER.put("", "冲洗");
 	}
 
+	/**
+	 * 净水器参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getWATERPURIFIERValue(final String code) {
+		return WATERPURIFIER.getOrDefault(code, ERROR);
+	}
+
+	/**
+	 * 场景面板
+	 */
+	private static final Map<String, String> SCENEPANEL = new ConcurrentHashMap<>();
+
+	static {
+
+		SCENEPANEL.put("", "开");
+		SCENEPANEL.put("", "关");
+		SCENEPANEL.put("", "up");
+		SCENEPANEL.put("", "down");
+
+		// 指令名称
+		SCENEPANEL.put("", "恢复默认");
+		SCENEPANEL.put("", "场景控制");
+		SCENEPANEL.put("", "场景设置");
+	}
+
+	/**
+	 * 场景面板参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getSCENEPANELValue(final String code) {
+		return SCENEPANEL.getOrDefault(code, ERROR);
+	}
+
+	/**
+	 * 声光报警器
+	 */
+	private static final Map<String, String> AUD_AND_VIS_ALARM = new ConcurrentHashMap<>();
+
+	static {
+
+		AUD_AND_VIS_ALARM.put("", "开");
+		AUD_AND_VIS_ALARM.put("", "正常");
+		AUD_AND_VIS_ALARM.put("", "消除");
+
+		// 指令名称
+		AUD_AND_VIS_ALARM.put("", "开关");
+		AUD_AND_VIS_ALARM.put("", "消除当前告警");
+	}
+
+	/**
+	 * 声光报警器参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getAudAndVisAlarmValue(final String code) {
+		return AUD_AND_VIS_ALARM.getOrDefault(code, ERROR);
+	}
+
 }
