@@ -81,4 +81,43 @@ public class CommandConsts {
 		return CURTAIN.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 插座
+	 */
+	private static final Map<String, String> SOCKET = new ConcurrentHashMap<>();
+
+	static {
+
+		SOCKET.put("", "开");
+		SOCKET.put("", "关");
+
+		// 指令名称
+		SOCKET.put("", "开关");
+	}
+
+	/**
+	 * 插座参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getSOCKETValue(final String code) {
+		return SOCKET.getOrDefault(code, ERROR);
+	}
+
+	/**
+	 * 净水器
+	 */
+	private static final Map<String, String> WATERPURIFIER = new ConcurrentHashMap<>();
+
+	static {
+
+		WATERPURIFIER.put("", "开");
+		WATERPURIFIER.put("", "关");
+
+		// 指令名称
+		WATERPURIFIER.put("", "开关");
+		WATERPURIFIER.put("", "冲洗");
+	}
+
 }
