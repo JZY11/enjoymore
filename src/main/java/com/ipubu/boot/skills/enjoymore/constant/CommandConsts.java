@@ -396,4 +396,58 @@ public class CommandConsts {
 		return INTELPROJECTOR.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 智能插座（单口）
+	 */
+	private static final Map<String, String> SMARTSOCKET = new ConcurrentHashMap<>();
+
+	static {
+
+		SMARTSOCKET.put("", "关");
+		SMARTSOCKET.put("", "开");
+
+		// 指令名称
+		SMARTSOCKET.put("", "开关");
+	}
+
+	/**
+	 * 智能插座（单口）参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getSMARTSOCKETValue(final String code) {
+		return SMARTSOCKET.getOrDefault(code, ERROR);
+	}
+
+	/**
+	 * 智能插座（多口）
+	 */
+	private static final Map<String, String> SMARTSOCKETS = new ConcurrentHashMap<>();
+
+	static {
+
+		SMARTSOCKETS.put("", "关");
+		SMARTSOCKETS.put("", "开");
+
+		// 指令名称
+		SMARTSOCKETS.put("", "USB开关2");
+		SMARTSOCKETS.put("", "开关2");
+		SMARTSOCKETS.put("", "USB开关3");
+		SMARTSOCKETS.put("", "USB开关");
+		SMARTSOCKETS.put("", "开关");
+		SMARTSOCKETS.put("", "开关3");
+		SMARTSOCKETS.put("", "开关4");
+	}
+
+	/**
+	 * 智能插座（多口）参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getSMARTSOCKETSValue(final String code) {
+		return SMARTSOCKETS.getOrDefault(code, ERROR);
+	}
+
 }
