@@ -184,4 +184,116 @@ public class CommandConsts {
 		return AUD_AND_VIS_ALARM.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 天翼网关
+	 */
+	private static final Map<String, String> PHYSICALGATEWAY = new ConcurrentHashMap<>();
+
+	static {
+
+		PHYSICALGATEWAY.put("", "开");
+		PHYSICALGATEWAY.put("", "关");
+
+		// 指令名称
+		PHYSICALGATEWAY.put("", "设置当前LED 灯开启状态");
+	}
+
+	/**
+	 * 天翼网关参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getPHYSICALGATEWAYValue(final String code) {
+		return PHYSICALGATEWAY.getOrDefault(code, ERROR);
+	}
+
+	/**
+	 * 智能路由器
+	 */
+	private static final Map<String, String> INTELLIGENTROUTER = new ConcurrentHashMap<>();
+
+	static {
+
+		INTELLIGENTROUTER.put("", "开");
+		INTELLIGENTROUTER.put("", "关");
+
+		// 指令名称
+		INTELLIGENTROUTER.put("", "设置当前LED 灯开启状态");
+	}
+
+	/**
+	 * 智能路由器参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getINTELLIGENTROUTERValue(final String code) {
+		return INTELLIGENTROUTER.getOrDefault(code, ERROR);
+	}
+
+	/**
+	 * 扫地机器人
+	 */
+	private static final Map<String, String> FLOOR_MOPPING_ROBOT = new ConcurrentHashMap<>();
+
+	static {
+
+		FLOOR_MOPPING_ROBOT.put("", "工作中");
+		FLOOR_MOPPING_ROBOT.put("", "待机");
+		FLOOR_MOPPING_ROBOT.put("", "完成工作");
+		FLOOR_MOPPING_ROBOT.put("", "回充中");
+		FLOOR_MOPPING_ROBOT.put("", "充电中");
+		FLOOR_MOPPING_ROBOT.put("", "充电完成");
+		FLOOR_MOPPING_ROBOT.put("", "故障");
+		FLOOR_MOPPING_ROBOT.put("", "电量不足");
+		FLOOR_MOPPING_ROBOT.put("", "关");
+		FLOOR_MOPPING_ROBOT.put("", "开");
+		FLOOR_MOPPING_ROBOT.put("", "停");
+
+		// 指令名称
+		FLOOR_MOPPING_ROBOT.put("", "状态");
+		FLOOR_MOPPING_ROBOT.put("", "开关");
+	}
+
+	/**
+	 * 扫地机器人参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getFloorMoppingRobotValue(final String code) {
+		return FLOOR_MOPPING_ROBOT.getOrDefault(code, ERROR);
+	}
+
+	/**
+	 * 控制主机
+	 */
+	private static final Map<String, String> CONTROLHOST = new ConcurrentHashMap<>();
+
+	static {
+
+		CONTROLHOST.put("", "up");
+		CONTROLHOST.put("", "down");
+		CONTROLHOST.put("", "关");
+		CONTROLHOST.put("", "开");
+
+		// 指令名称
+		CONTROLHOST.put("", "密钥");
+		CONTROLHOST.put("", "动态加密方式");
+		CONTROLHOST.put("", "开关");
+		CONTROLHOST.put("", "红外码");
+	}
+
+	/**
+	 * 控制主机参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getCONTROLHOSTValue(final String code) {
+		return CONTROLHOST.getOrDefault(code, ERROR);
+	}
+
+
 }
