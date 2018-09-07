@@ -295,5 +295,105 @@ public class CommandConsts {
 		return CONTROLHOST.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 摄像头
+	 */
+	private static final Map<String, String> CAMERA = new ConcurrentHashMap<>();
+
+	static {
+
+		CAMERA.put("", "up");
+		CAMERA.put("", "down");
+		CAMERA.put("", "关");
+		CAMERA.put("", "开");
+
+		// 指令名称
+		CAMERA.put("", "移动侦测");
+		CAMERA.put("", "纵向旋转角度");
+		CAMERA.put("", "数据存储");
+		CAMERA.put("", "录制视频开关");
+		CAMERA.put("", "开关");
+		CAMERA.put("", "横向旋转角度");
+		CAMERA.put("", "缩放");
+		CAMERA.put("", "报警");
+	}
+
+	/**
+	 * 摄像头参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getCAMERAValue(final String code) {
+		return CAMERA.getOrDefault(code, ERROR);
+	}
+
+	/**
+	 * 智能开关
+	 */
+	private static final Map<String, String> INTELSWITCH = new ConcurrentHashMap<>();
+
+	static {
+
+		INTELSWITCH.put("", "关");
+		INTELSWITCH.put("", "开");
+
+		// 指令名称
+		INTELSWITCH.put("", "开关1");
+		INTELSWITCH.put("", "三路开关");
+		INTELSWITCH.put("", "开关2");
+		INTELSWITCH.put("", "开关5");
+		INTELSWITCH.put("", "开关6");
+		INTELSWITCH.put("", "开关3");
+		INTELSWITCH.put("", "开关4");
+	}
+
+	/**
+	 * 智能开关参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getINTELSWITCHValue(final String code) {
+		return INTELSWITCH.getOrDefault(code, ERROR);
+	}
+
+	/**
+	 * 智能投影仪
+	 */
+	private static final Map<String, String> INTELPROJECTOR = new ConcurrentHashMap<>();
+
+	static {
+
+		INTELPROJECTOR.put("", "关");
+		INTELPROJECTOR.put("", "开");
+		INTELPROJECTOR.put("", "up");
+		INTELPROJECTOR.put("", "down");
+		INTELPROJECTOR.put("", "上");
+		INTELPROJECTOR.put("", "下");
+		INTELPROJECTOR.put("", "左");
+		INTELPROJECTOR.put("", "右");
+		INTELPROJECTOR.put("", "确定");
+		INTELPROJECTOR.put("", "音量增");
+		INTELPROJECTOR.put("", "音量减");
+		INTELPROJECTOR.put("", "菜单");
+		INTELPROJECTOR.put("", "首页");
+		INTELPROJECTOR.put("", "返回");
+
+		// 指令名称
+		INTELPROJECTOR.put("", "操作");
+		INTELPROJECTOR.put("", "片单");
+		INTELPROJECTOR.put("", "开关");
+	}
+
+	/**
+	 * 智能投影仪参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getINTELPROJECTORValue(final String code) {
+		return INTELPROJECTOR.getOrDefault(code, ERROR);
+	}
 
 }
