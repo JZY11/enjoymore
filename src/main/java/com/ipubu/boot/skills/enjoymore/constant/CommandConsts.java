@@ -603,4 +603,42 @@ public class CommandConsts {
 		return INTELREMOTE.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 空气净化器
+	 */
+	private static final Map<String, String> AIRCLEANER = new ConcurrentHashMap<>();
+
+	static {
+
+		AIRCLEANER.put("", "手动");
+		AIRCLEANER.put("", "自动");
+		AIRCLEANER.put("", "睡眠");
+		AIRCLEANER.put("", "关");
+		AIRCLEANER.put("", "开");
+		AIRCLEANER.put("", "up");
+		AIRCLEANER.put("", "down");
+		AIRCLEANER.put("", "低速");
+		AIRCLEANER.put("", "中速");
+		AIRCLEANER.put("", "高速");
+
+		// 指令名称
+		AIRCLEANER.put("", "睡眠");
+		AIRCLEANER.put("", "杀菌");
+		AIRCLEANER.put("", "定时1");
+		AIRCLEANER.put("", "风速");
+		AIRCLEANER.put("", "无级1");
+		AIRCLEANER.put("", "开关");
+		AIRCLEANER.put("", "设置温度");
+	}
+
+	/**
+	 * 空气净化器参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getAIRCLEANERValue(final String code) {
+		return AIRCLEANER.getOrDefault(code, ERROR);
+	}
+
 }
