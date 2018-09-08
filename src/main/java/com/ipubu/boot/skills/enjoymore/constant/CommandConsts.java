@@ -664,4 +664,30 @@ public class CommandConsts {
 		return INFRAREDSENSOR.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 门、窗磁
+	 */
+	private static final Map<String, String> DOORWINDOWMAGNETIC = new ConcurrentHashMap<>();
+
+	static {
+		DOORWINDOWMAGNETIC.put("", "正常");
+		DOORWINDOWMAGNETIC.put("", "消除");
+		DOORWINDOWMAGNETIC.put("", "开");
+		DOORWINDOWMAGNETIC.put("", "关");
+
+		// 指令名称
+		DOORWINDOWMAGNETIC.put("", "探测器状态");
+	}
+
+	/**
+	 * 门、窗磁参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getDOORWINDOWMAGNETICValue(final String code) {
+		return DOORWINDOWMAGNETIC.getOrDefault(code, ERROR);
+	}
+
+
 }
