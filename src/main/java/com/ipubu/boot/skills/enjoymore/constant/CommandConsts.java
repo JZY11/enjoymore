@@ -845,4 +845,58 @@ public class CommandConsts {
 		return INTELLIGHTS.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 多路灯具
+	 */
+	private static final Map<String, String> DL_LIGHTS = new ConcurrentHashMap<>();
+
+	static {
+
+		DL_LIGHTS.put("", "up");
+		DL_LIGHTS.put("", "down");
+		DL_LIGHTS.put("", "开");
+		DL_LIGHTS.put("", "关");
+		DL_LIGHTS.put("", "挂机");
+
+		// 指令名称
+		DL_LIGHTS.put("", "红色值3");
+		DL_LIGHTS.put("", "红色值2");
+		DL_LIGHTS.put("", "红色值1");
+		DL_LIGHTS.put("", "红色值4");
+		DL_LIGHTS.put("", "开关3");
+		DL_LIGHTS.put("", "开关4");
+		DL_LIGHTS.put("", "亮度等级1");
+		DL_LIGHTS.put("", "亮度等级3");
+		DL_LIGHTS.put("", "亮度等级2");
+		DL_LIGHTS.put("", "亮度等级4");
+		DL_LIGHTS.put("", "渐变延时1");
+		DL_LIGHTS.put("", "渐变延时2");
+		DL_LIGHTS.put("", "渐变延时3");
+		DL_LIGHTS.put("", "绿色值3");
+		DL_LIGHTS.put("", "渐变延时4");
+		DL_LIGHTS.put("", "绿色值4");
+		DL_LIGHTS.put("", "绿色值1");
+		DL_LIGHTS.put("", "绿色值2");
+		DL_LIGHTS.put("", "开关1");
+		DL_LIGHTS.put("", "开关2");
+		DL_LIGHTS.put("", "蓝色值1");
+		DL_LIGHTS.put("", "蓝色值2");
+		DL_LIGHTS.put("", "蓝色值3");
+		DL_LIGHTS.put("", "蓝色值4");
+		DL_LIGHTS.put("", "色温等级4");
+		DL_LIGHTS.put("", "色温等级3");
+		DL_LIGHTS.put("", "色温等级2");
+		DL_LIGHTS.put("", "色温等级1");
+	}
+
+	/**
+	 * 多路灯具参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getDLlightsValue(final String code) {
+		return DL_LIGHTS.getOrDefault(code, ERROR);
+	}
+
 }
