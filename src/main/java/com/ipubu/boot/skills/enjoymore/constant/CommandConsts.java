@@ -781,4 +781,68 @@ public class CommandConsts {
 		return INTELAIR.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 智能电饭煲
+	 */
+	private static final Map<String, String> SMART_RICE_COOKER = new ConcurrentHashMap<>();
+
+	static {
+
+		SMART_RICE_COOKER.put("", "up");
+		SMART_RICE_COOKER.put("", "down");
+		SMART_RICE_COOKER.put("", "启动");
+		SMART_RICE_COOKER.put("", "取消");
+		SMART_RICE_COOKER.put("", "暂停");
+		SMART_RICE_COOKER.put("", "高温");
+		SMART_RICE_COOKER.put("", "低温");
+		SMART_RICE_COOKER.put("", "无预约");
+		SMART_RICE_COOKER.put("", "预约");
+		SMART_RICE_COOKER.put("", "普通米");
+		SMART_RICE_COOKER.put("", "糯米");
+		SMART_RICE_COOKER.put("", "丝苗米");
+		SMART_RICE_COOKER.put("", "珍珠米");
+		SMART_RICE_COOKER.put("", "玄米");
+		SMART_RICE_COOKER.put("", "东北米");
+		SMART_RICE_COOKER.put("", "香米");
+		SMART_RICE_COOKER.put("", "糙米");
+		SMART_RICE_COOKER.put("", "糙米发芽");
+		SMART_RICE_COOKER.put("", "长粒米");
+		SMART_RICE_COOKER.put("", "短粒米");
+		SMART_RICE_COOKER.put("", "标准");
+		SMART_RICE_COOKER.put("", "偏软");
+		SMART_RICE_COOKER.put("", "偏硬");
+		SMART_RICE_COOKER.put("", "锅巴");
+		SMART_RICE_COOKER.put("", "蒸");
+		SMART_RICE_COOKER.put("", "煮");
+		SMART_RICE_COOKER.put("", "焖");
+		SMART_RICE_COOKER.put("", "炖");
+		SMART_RICE_COOKER.put("", "待机");
+		SMART_RICE_COOKER.put("", "保温");
+
+		// 指令名称
+		SMART_RICE_COOKER.put("", "焖饭时间");
+		SMART_RICE_COOKER.put("", "操作");
+		SMART_RICE_COOKER.put("", "温度模式");
+		SMART_RICE_COOKER.put("", "菜单");
+		SMART_RICE_COOKER.put("", "浸泡时间");
+		SMART_RICE_COOKER.put("", "浸泡温度");
+		SMART_RICE_COOKER.put("", "预约");
+		SMART_RICE_COOKER.put("", "吸水时间");
+		SMART_RICE_COOKER.put("", "制作时间");
+		SMART_RICE_COOKER.put("", "保温时间");
+		SMART_RICE_COOKER.put("", "米种");
+		SMART_RICE_COOKER.put("", "口感");
+		SMART_RICE_COOKER.put("", "模式选择");
+	}
+
+	/**
+	 * 智能电饭煲参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getSmartRiceCookerValue(final String code) {
+		return INTELLIGHTS.getOrDefault(code, ERROR);
+	}
+
 }
