@@ -641,4 +641,27 @@ public class CommandConsts {
 		return AIRCLEANER.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 红外感应器
+	 */
+	private static final Map<String, String> INFRAREDSENSOR = new ConcurrentHashMap<>();
+
+	static {
+		INFRAREDSENSOR.put("", "正常");
+		INFRAREDSENSOR.put("", "消除");
+
+		// 指令名称
+		INFRAREDSENSOR.put("", "消除当前告警");
+	}
+
+	/**
+	 * 红外感应器参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getINFRAREDSENSORValue(final String code) {
+		return INFRAREDSENSOR.getOrDefault(code, ERROR);
+	}
+
 }
