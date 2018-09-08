@@ -574,4 +574,33 @@ public class CommandConsts {
 		return INTELDOORLOCK.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 智能遥控器
+	 */
+	private static final Map<String, String> INTELREMOTE = new ConcurrentHashMap<>();
+
+	static {
+
+		INTELREMOTE.put("", "关");
+		INTELREMOTE.put("", "开");
+		INTELREMOTE.put("", "up");
+		INTELREMOTE.put("", "down");
+
+		// 指令名称
+		INTELREMOTE.put("", "开关");
+		INTELREMOTE.put("", "密钥");
+		INTELREMOTE.put("", "动态加密方式");
+		INTELREMOTE.put("", "红外码");
+	}
+
+	/**
+	 * 智能遥控器参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getINTELREMOTEVIEWValue(final String code) {
+		return INTELREMOTE.getOrDefault(code, ERROR);
+	}
+
 }
