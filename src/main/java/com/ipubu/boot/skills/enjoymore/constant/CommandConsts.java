@@ -689,5 +689,96 @@ public class CommandConsts {
 		return DOORWINDOWMAGNETIC.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 智能音响
+	 */
+	private static final Map<String, String> INTELSOUND = new ConcurrentHashMap<>();
+
+	static {
+
+		INTELSOUND.put("", "不变");
+		INTELSOUND.put("", "上一首");
+		INTELSOUND.put("", "下一首");
+		INTELSOUND.put("", "红色");
+		INTELSOUND.put("", "绿色");
+		INTELSOUND.put("", "蓝色");
+		INTELSOUND.put("", "关闭");
+		INTELSOUND.put("", "打开");
+		INTELSOUND.put("", "关");
+		INTELSOUND.put("", "开");
+		INTELSOUND.put("", "up");
+		INTELSOUND.put("", "down");
+
+		// 指令名称
+		INTELSOUND.put("", "音乐切换开关");
+		INTELSOUND.put("", "呼吸灯颜色");
+		INTELSOUND.put("", "音量增大");
+		INTELSOUND.put("", "呼吸灯开关");
+		INTELSOUND.put("", "开关");
+		INTELSOUND.put("", "音乐播放");
+		INTELSOUND.put("", "音量减小");
+		INTELSOUND.put("", "小夜灯开关");
+		INTELSOUND.put("", "音量大小(百分比)");
+		INTELSOUND.put("", "识音开关");
+		INTELSOUND.put("", "静音开关");
+	}
+
+	/**
+	 * 智能音响参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getINTELSOUNDValue(final String code) {
+		return INTELSOUND.getOrDefault(code, ERROR);
+	}
+
+	/**
+	 * 智能空调
+	 */
+	private static final Map<String, String> INTELAIR = new ConcurrentHashMap<>();
+
+	static {
+
+		INTELAIR.put("", "关");
+		INTELAIR.put("", "开");
+		INTELAIR.put("", "up");
+		INTELAIR.put("", "down");
+		INTELAIR.put("", "自动");
+		INTELAIR.put("", "风向1");
+		INTELAIR.put("", "风向2");
+		INTELAIR.put("", "风向3");
+		INTELAIR.put("", "低风");
+		INTELAIR.put("", "中风");
+		INTELAIR.put("", "高风");
+		INTELAIR.put("", "制冷");
+		INTELAIR.put("", "除湿");
+		INTELAIR.put("", "送风");
+		INTELAIR.put("", "制热");
+		INTELAIR.put("", "开关");
+		INTELAIR.put("", "模式");
+		INTELAIR.put("", "温度");
+		INTELAIR.put("", "风速");
+		INTELAIR.put("", "风向");
+		INTELAIR.put("", "其它");
+
+		// 指令名称
+		INTELAIR.put("", "温度");
+		INTELAIR.put("", "风向");
+		INTELAIR.put("", "风速");
+		INTELAIR.put("", "模式");
+		INTELAIR.put("", "开关");
+		INTELAIR.put("", "按键");
+	}
+
+	/**
+	 * 智能空调参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getINTELAIRValue(final String code) {
+		return INTELAIR.getOrDefault(code, ERROR);
+	}
 
 }
