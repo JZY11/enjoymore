@@ -541,4 +541,37 @@ public class CommandConsts {
 		return INTELVEHICLEREARVIEW.getOrDefault(code, ERROR);
 	}
 
+	/**
+	 * 智能门锁
+	 */
+	private static final Map<String, String> INTELDOORLOCK = new ConcurrentHashMap<>();
+
+	static {
+		// [{"param":["不请求","请求"],"function":"app开锁随机数请求"},
+		// {"param":["门开","门锁"],"function":"门锁状态"},
+		// {"param":["up","down"],"function":"app开锁发送开锁密码"}]
+
+		INTELDOORLOCK.put("", "不请求");
+		INTELDOORLOCK.put("", "请求");
+		INTELDOORLOCK.put("", "门开");
+		INTELDOORLOCK.put("", "门锁");
+		INTELDOORLOCK.put("", "up");
+		INTELDOORLOCK.put("", "down");
+
+		// 指令名称
+		INTELDOORLOCK.put("", "app开锁随机数请求");
+		INTELDOORLOCK.put("", "门锁状态");
+		INTELDOORLOCK.put("", "app开锁发送开锁密码");
+	}
+
+	/**
+	 * 智能门锁参数指令
+	 * 
+	 * @param code
+	 * @return
+	 */
+	public static String getINTELDOORLOCKValue(final String code) {
+		return INTELDOORLOCK.getOrDefault(code, ERROR);
+	}
+
 }
