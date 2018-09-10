@@ -102,4 +102,21 @@ public class FKeyConsts {
 		AIR.put("固定风", "7");
 	}
 
+	public static final Map<String, String> QUERY_AIR = new ConcurrentHashMap<>();
+
+	static {
+		QUERY_AIR.put("状态", "0");
+		QUERY_AIR.put("模式", "1");
+		QUERY_AIR.put("温度", "2");
+		QUERY_AIR.put("风速", "3");
+
+		QUERY_AIR.put("风速0", "自动挡");
+		QUERY_AIR.put("风速1", "低档");
+		QUERY_AIR.put("风速2", "中档");
+		QUERY_AIR.put("风速3", "高档");
+
+		QUERY_AIR.put("状态0", "开机");
+		QUERY_AIR.put("状态1", "关机");
+	}
+
 }
