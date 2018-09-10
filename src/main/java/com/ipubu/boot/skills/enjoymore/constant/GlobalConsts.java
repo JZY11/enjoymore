@@ -21,5 +21,22 @@ public final class GlobalConsts {
 
     public static final String CHAR_ENCODING = "UTF-8";
 
+    public static final String TOPIC_SMARTHOME_DATASYNC = "cui.morefun.datasync";
+   
+    public static final String DB_MF_ACCOUNT_LINKED = "mf_account_linked";
+    
+    public static final String DB_MF_ACCOUNT_INFO = "mf_account_info";
+
+    public static final String DB_MF_CUSTOM_DEVICE_SCENE = "mf_custom_device_scene";
+   
+    public static final String DB_MF_DEVICE_SCENE = "mf_device_scene";
+    
+    public static final String DB_MF_ACCOUNT_SCENE = "mf_account_scene";
+
+    public static final String OPERATE_ADD = "1";
+    public static final String OPERATE_EDIT = "2";
+    public static final String OPERATE_DEL = "3";
+
+
 
 }
