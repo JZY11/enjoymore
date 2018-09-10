@@ -62,4 +62,44 @@ public class FKeyConsts {
 		TV.put("信息", "display");
 	}
 
+	public static final Map<String, String> SOCKET = new ConcurrentHashMap<>();
+
+	static {
+
+		SOCKET.put("打开", "on");
+		SOCKET.put("关闭", "off");
+	}
+
+	public static final Map<String, String> AIR = new ConcurrentHashMap<>();
+
+	static {
+		// 开关
+		AIR.put("打开", "0");
+		AIR.put("关闭", "1");
+		// 模式
+		AIR.put("除湿", "4");
+		AIR.put("送风", "3");
+		AIR.put("自动", "2");
+		AIR.put("制热", "1");
+		AIR.put("制冷", "0");
+		// 温度
+		AIR.put("+", "1");
+		AIR.put("-", "-1");
+		// 风量
+		AIR.put("风量自动", "0");
+		AIR.put("风量低", "1");
+		AIR.put("风量中", "2");
+		AIR.put("风量高", "3");
+		// 风向
+
+		// 按键Id
+		AIR.put("电源", "1");
+		AIR.put("模式", "2");
+		AIR.put("温度-", "3");
+		AIR.put("温度+", "4");
+		AIR.put("风量", "5");
+		AIR.put("扫风", "6");
+		AIR.put("固定风", "7");
+	}
+
 }
