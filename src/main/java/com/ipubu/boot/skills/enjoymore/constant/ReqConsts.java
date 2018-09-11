@@ -27,5 +27,22 @@ public class ReqConsts {
 
     public static final String P_ACTION = "action";
 
+    public static final String P_PAYLOAD = "payload";
+
+    public static final String P_ATTRIBUTE = "attribute";
+
+    public static final String P_VALUE = "value";
+
+    public static final String PLATFORM_MOREFUN = "morefun";
+
+    public static final String ACTION_ACCOUNT_LINKED = "accountLinked";
+
+    public static final String P_TYPE = "type";
+
+    public static final String REQ_ACTION = "解析指令名称";
+
+    public static final String REQ_PARAM = "解析指令参数";
+
+    public static final String REQ_INPUT = "解析用户输入";
 
 }
