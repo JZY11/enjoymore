@@ -78,4 +78,12 @@ public class AccountScene implements Serializable {
     public void setAfterModifysceneName(String afterModifysceneName) {
         this.afterModifysceneName = afterModifysceneName;
     }
+
+    @Override
+    public String toString() {
+        return "AccountScene{" + "id='" + id + '\'' + ", userId='" + userId + '\''
+                + ", thirdAccount='" + thirdAccount + '\'' + ", sceneName='" + sceneName + '\''
+                + ", afterModifysceneName='" + afterModifysceneName + '\'' + ", operType='"
+                + operType + '\'' + '}';
+    }
 }
