@@ -61,5 +61,10 @@ public class AccountLinked implements Serializable {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "AccountLinked [id=" + id + ", userId=" + userId + ", username=" + username
+                + ", password=" + password + "]";
+    }
 
 }
