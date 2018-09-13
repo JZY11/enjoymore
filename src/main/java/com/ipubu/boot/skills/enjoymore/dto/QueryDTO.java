@@ -33,6 +33,29 @@ public class QueryDTO {
     private String uid; // 设备唯一标识
 
 
+    public QueryDTO build() throws SmartHomeException {
+
+        if (isInvalidPara(userName) || isInvalidPara(password)) {
+            throw new SmartHomeException("param userName is null or password is null. userName="
+                    + userName + ",password =" + password);
+        }
+
+        try {
+            paramsMap.put(P_APPID, APPID); // 【一定要有】
+            paramsMap.put(P_TIME, String.valueOf(System.currentTimeMillis())); // 【一定要有】
+            String randomsn = UUID.randomUUID().toString().replaceAll("-", "");
+            paramsMap.put("sn", randomsn); // 【一定要有】
+
+            paramsMap.put(P_USER_NAME, getUserName()); // 【一定要有】
+//            paramsMap.put(P_PWORD, getPassword()); // 【一定要有】
+
+        } catch (Exception e) {
+            throw new SmartHomeException("build query params exception ," + e.getMessage());
+        }
+
+        return this;
+    }
+
 
     public String getUri() {
         return uri;
