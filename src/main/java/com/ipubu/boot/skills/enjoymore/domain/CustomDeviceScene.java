@@ -89,5 +89,12 @@ public class CustomDeviceScene implements Serializable {
         this.action = action;
     }
 
+    @Override
+    public String toString() {
+        return "CustomDeviceScene [id=" + id + ", userId=" + userId + ", thirdAccount="
+                + thirdAccount + ", beforeModifyDeviceName=" + beforeModifyDeviceName
+                + ", afterModifyDeviceName=" + afterModifyDeviceName + ", deviceTypeName="
+                + deviceTypeName + ", action=" + action + "]";
+    }
 
 }
