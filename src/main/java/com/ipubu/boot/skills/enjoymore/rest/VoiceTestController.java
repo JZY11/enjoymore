@@ -1,5 +1,7 @@
 package com.ipubu.boot.skills.enjoymore.rest;
 
+
+
 import static com.ipubu.boot.skills.base.constant.ResponseConsts.RESPONSE_ERROR;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -14,17 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSONObject;
 import com.ipubu.boot.skills.enjoymore.smarthome.SmartHomeFactory;
 import com.lenovo.cui.skiprotocol.SKIResponser;
+
 /**
- * @ClassName MoreFunRestController
+ * @ClassName VoiceTestController
  * @Description
  * @Author jzy
  */
-
-@RequestMapping("/normal")
+@RequestMapping("/testVoice/")
 @RestController
-public class MoreFunRestController {
+public class VoiceTestController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MoreFunRestController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(VoiceTestController.class);
+
 
     /**
      * 
@@ -52,6 +55,5 @@ public class MoreFunRestController {
         String text = RESPONSE_ERROR;
         return SKIResponser.getResponseJSON(type, null, null, null, shouldEndSession, text);
     }
-
 
 }
