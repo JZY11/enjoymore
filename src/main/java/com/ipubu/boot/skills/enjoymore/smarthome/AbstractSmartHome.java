@@ -37,6 +37,17 @@ public abstract class AbstractSmartHome {
     @Autowired
     protected static MoreFunService morefunService;
 
+    static {
+
+        if (morefunService == null) {
+            morefunService = BeanContainer.getBean(MoreFunService.class);
+        }
+
+        if (morefunApiService == null) {
+            morefunApiService = BeanContainer.getBean(MoreFunApiService.class);
+        }
+    }
+
     /**
      * 处理返回信息
      * 
