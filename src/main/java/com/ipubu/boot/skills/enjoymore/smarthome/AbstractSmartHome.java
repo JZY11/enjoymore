@@ -38,6 +38,25 @@ public abstract class AbstractSmartHome {
     protected static MoreFunService morefunService;
 
     /**
+     * 处理返回信息
+     * 
+     * @param rtnObj
+     */
+    protected String processResponse(JSONObject rtnObj, final String expectMsg) {
+
+        String text = expectMsg;
+        final String rtnCode = rtnObj.getString(RESULTCODE);
+
+        if (!SUCCESS.equalsIgnoreCase(rtnCode)) {
+            text = getCodeMsg(rtnCode);
+            if (LOGGER.isInfoEnabled()) {
+                LOGGER.info("invoke remote interface return msg:{}", text);
+            }
+        }
+        return text;
+    }
+
+    /**
      * 返回消息
      * 
      * @param msg
