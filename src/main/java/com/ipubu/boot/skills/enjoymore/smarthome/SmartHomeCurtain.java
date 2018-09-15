@@ -49,12 +49,28 @@ public class SmartHomeCurtain extends AbstractSmartHome implements SmartHome {
 			LOGGER.warn(USER_NO_FIND, userId);
 			return responseMsg(RspConsts.getUserId(userId));
 		}
+		// 获得的指令参数
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("SmartHomeLight req paramValue:{}", paramValue);
 		}
 
+		// 参数为空返回 "指令未找到"
 		if (paramValue.isEmpty()) {
 			return responseMsg(PARAM_NO_FIND);
 		}
+
+		// 查询用户是否绑定该设备
+		List<CustomDeviceScene> accountDevice = morefunService.getAccountDevice(userId, SMARTHOME_CURTAIN);
+		if (ParamChecker.isEmpty(accountDevice)) {
+			LOGGER.warn(USER_NO_DEVICE, userId, SMARTHOME_CURTAIN);
+			return responseMsg(SMARTHOME_CURTAIN + DEVICE_NO_FIND);
+		}
+
+		// 查询设备的参数信息
+		JSONObject deviceScene = morefunService.getDeviceScene(SMARTHOME_CURTAIN);
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("SmartHomeLight req deviceScene:{}", deviceScene);
+		}
+
 
 }
