@@ -70,6 +70,15 @@ public class SmartHomeFactory {
 
             JSONObject obj = smartHome.control(intent, userId);
 
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug("device request process finished :{}", obj);
+            }
+
+            if (obj != null) {
+                text = obj.getString(RESP_TEXT);
+            }
+
+            return SKIResponser.getResponseJSON(type, null, null, null, shouldEndSession, text);
         } catch (Exception e) {
             LOGGER.error("SmartHome process exception :", e);
         }
