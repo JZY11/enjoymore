@@ -59,4 +59,18 @@ public class SmartHomeLight extends AbstractSmartHome implements SmartHome {
 			return responseMsg(PARAM_NO_FIND);
 		}
 
+		// 查询用户是否绑定该设备
+		List<CustomDeviceScene> accountDevice = morefunService.getAccountDevice(userId, SMARTHOME_LIGHT);
+		if (ParamChecker.isEmpty(accountDevice)) {
+			LOGGER.warn(USER_NO_DEVICE, userId, SMARTHOME_LIGHT);
+			return responseMsg(SMARTHOME_LIGHT + DEVICE_NO_FIND);
+		}
+
+		// 查询设备的参数信息
+		JSONObject deviceScene = morefunService.getDeviceScene(SMARTHOME_LIGHT);
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("SmartHomeLight req deviceScene:{}", deviceScene);
+		}
+
+
 }
