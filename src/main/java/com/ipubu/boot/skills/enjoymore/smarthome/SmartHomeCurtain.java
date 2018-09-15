@@ -49,5 +49,12 @@ public class SmartHomeCurtain extends AbstractSmartHome implements SmartHome {
 			LOGGER.warn(USER_NO_FIND, userId);
 			return responseMsg(RspConsts.getUserId(userId));
 		}
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("SmartHomeLight req paramValue:{}", paramValue);
+		}
+
+		if (paramValue.isEmpty()) {
+			return responseMsg(PARAM_NO_FIND);
+		}
 
 }
