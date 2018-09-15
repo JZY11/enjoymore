@@ -92,4 +92,16 @@ public class SmartHomeLight extends AbstractSmartHome implements SmartHome {
 			}
 		}
 
+		// 如果指令参数超出范围返回 "指令超出可操作范围！"
+		if (controlDTO.getParam().isEmpty()) {
+			return responseMsg(PARAM_OUT_RANGE);
+		}
+
+		JSONObject response = new JSONObject();
+		JSONObject execControl = morefunApiService.execControl(controlDTO);
+		String resultCode = execControl.getString("resultCode");
+		response.put(RESPONSE_TEXT, RtnCodeConsts.getCodeMsg(resultCode));
+		return response;
+	}
+
 }
