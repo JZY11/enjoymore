@@ -50,5 +50,14 @@ public class SmartHomeSocket extends AbstractSmartHome implements SmartHome {
 			return responseMsg(RspConsts.getUserId(userId));
 		}
 
+		// 获得的指令参数
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("SmartHomeLight req paramValue:{}", paramValue);
+		}
+
+		// 参数为空返回 "指令未找到"
+		if (paramValue.isEmpty()) {
+			return responseMsg(PARAM_NO_FIND);
+		}
 
 }
