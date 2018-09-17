@@ -60,4 +60,11 @@ public class SmartHomeSocket extends AbstractSmartHome implements SmartHome {
 			return responseMsg(PARAM_NO_FIND);
 		}
 
+		// 查询用户是否绑定该设备
+		List<CustomDeviceScene> accountDevice = morefunService.getAccountDevice(userId, SMARTHOME_SOCKET);
+		if (ParamChecker.isEmpty(accountDevice)) {
+			LOGGER.warn(USER_NO_DEVICE, userId, SMARTHOME_SOCKET);
+			return responseMsg(SMARTHOME_SOCKET + DEVICE_NO_FIND);
+		}
+
 }
