@@ -73,4 +73,24 @@ public class SmartHomeSocket extends AbstractSmartHome implements SmartHome {
 			LOGGER.debug("SmartHomeLight req deviceScene:{}", deviceScene);
 		}
 
+		JSONArray action = deviceScene.getJSONArray(DB_ACTION);
+
+		ControlDTO controlDTO = new ControlDTO();
+
+		for (int i = 0; i < action.size(); i++) {
+			String function = action.getJSONObject(i).getString(DB_FUNCTION);
+			if (actionValue.equals(function)) {
+				JSONArray param = action.getJSONObject(i).getJSONArray(DB_PARAM);
+				if (param.contains(paramValue)) {
+					controlDTO.setParam(paramValue);
+					controlDTO.setAction(actionValue);
+					controlDTO.setObject(SMARTHOME_SOCKET);
+					controlDTO.setOrignVolume(input);
+					controlDTO.setThirdAccount(accountLinked.getUsername());
+				}
+			} else {
+				return responseMsg(FUNCTION_NO);
+			}
+		}
+
 }
