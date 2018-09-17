@@ -67,4 +67,10 @@ public class SmartHomeSocket extends AbstractSmartHome implements SmartHome {
 			return responseMsg(SMARTHOME_SOCKET + DEVICE_NO_FIND);
 		}
 
+		// 查询设备的参数信息
+		JSONObject deviceScene = morefunService.getDeviceScene(SMARTHOME_SOCKET);
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("SmartHomeLight req deviceScene:{}", deviceScene);
+		}
+
 }
