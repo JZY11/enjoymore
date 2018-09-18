@@ -73,6 +73,11 @@ public class EsPage {
                 beginPageIndex = 1;
                 endPageIndex = 10;
             }
+         // 当后面的页码不足5个时，则显示后10个页码
+            if (endPageIndex > pageCount) {
+                endPageIndex = pageCount;
+                beginPageIndex = pageCount - 10 + 1;
+            }
         }
     }
 
