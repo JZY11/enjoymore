@@ -69,6 +69,25 @@ public class ElasticsearchUtil {
     }
 
     /**
+     * 删除索引
+     *
+     * @param index
+     * @return
+     */
+    public static boolean deleteIndex(String index) {
+        if (!isIndexExist(index)) {
+            LOGGER.info("Index is not exits!");
+        }
+        DeleteIndexResponse dResponse = client.admin().indices().prepareDelete(index).execute().actionGet();
+        if (dResponse.isAcknowledged()) {
+            LOGGER.info("delete index " + index + "  successfully!");
+        } else {
+            LOGGER.info("Fail to delete index " + index);
+        }
+        return dResponse.isAcknowledged();
+    }
+
+    /**
      * 判断索引是否存在
      *
      * @param index
