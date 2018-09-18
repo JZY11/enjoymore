@@ -63,6 +63,17 @@ public class EsPage {
             beginPageIndex = 1;
             endPageIndex = pageCount;
         }
+        // 总页数多于10页，则显示当前页附近的共10个页码
+        else {
+        // 当前页附近的共10个页码（前4个 + 当前页 + 后5个）
+            beginPageIndex = currentPage - 4;
+            endPageIndex = currentPage + 5;
+            // 当前面的页码不足4个时，则显示前10个页码
+            if (beginPageIndex < 1) {
+                beginPageIndex = 1;
+                endPageIndex = 10;
+            }
+        }
     }
 
 
