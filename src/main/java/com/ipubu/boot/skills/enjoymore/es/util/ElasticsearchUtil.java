@@ -121,4 +121,16 @@ public class ElasticsearchUtil {
         return response.getId();
     }
 
+    /**
+     * 数据添加
+     *
+     * @param jsonObject 要增加的数据
+     * @param index      索引，类似数据库
+     * @param type       类型，类似表
+     * @return
+     */
+    public static String addData(JSONObject jsonObject, String index, String type) {
+        return addData(jsonObject, index, type, UUID.randomUUID().toString().replaceAll("-", "").toUpperCase());
+    }
+
 }
