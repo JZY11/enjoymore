@@ -322,4 +322,37 @@ public class ElasticsearchUtil {
 
     }
 
+
+    /**
+     * 高亮结果集 特殊处理
+     *
+     * @param searchResponse
+     * @param highlightField
+     */
+    private static List<Map<String, Object>> setSearchResponse(SearchResponse searchResponse, String highlightField) {
+        List<Map<String, Object>> sourceList = new ArrayList<Map<String, Object>>();
+        StringBuffer stringBuffer = new StringBuffer();
+
+        for (SearchHit searchHit : searchResponse.getHits().getHits()) {
+            searchHit.getSourceAsMap().put("id", searchHit.getId());
+
+            if (StringUtils.isNotEmpty(highlightField)) {
+
+                System.out.println("遍历 高亮结果集，覆盖 正常结果集" + searchHit.getSourceAsMap());
+                Text[] text = searchHit.getHighlightFields().get(highlightField).getFragments();
+
+                if (text != null) {
+                    for (Text str : text) {
+                        stringBuffer.append(str.string());
+                    }
+//遍历 高亮结果集，覆盖 正常结果集
+                    searchHit.getSourceAsMap().put(highlightField, stringBuffer.toString());
+                }
+            }
+            sourceList.add(searchHit.getSourceAsMap());
+        }
+
+        return sourceList;
+    }
+
 }
