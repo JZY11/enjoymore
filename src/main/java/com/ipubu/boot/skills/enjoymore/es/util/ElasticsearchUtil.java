@@ -103,4 +103,22 @@ public class ElasticsearchUtil {
         return inExistsResponse.isExists();
     }
 
+    /**
+     * 数据添加，正定ID
+     *
+     * @param jsonObject 要增加的数据
+     * @param index      索引，类似数据库
+     * @param type       类型，类似表
+     * @param id         数据ID
+     * @return
+     */
+    public static String addData(JSONObject jsonObject, String index, String type, String id) {
+
+        IndexResponse response = client.prepareIndex(index, type, id).setSource(jsonObject).get();
+
+        LOGGER.info("addData response status:{},id:{}", response.status().getStatus(), response.getId());
+
+        return response.getId();
+    }
+
 }
