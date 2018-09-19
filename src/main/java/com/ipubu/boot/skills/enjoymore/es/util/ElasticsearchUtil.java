@@ -261,4 +261,65 @@ public class ElasticsearchUtil {
 
     }
 
+
+    /**
+     * 使用分词查询
+     *
+     * @param index          索引名称
+     * @param type           类型名称,可传入多个type逗号分隔
+     * @param query          查询条件
+     * @param size           文档大小限制
+     * @param fields         需要显示的字段，逗号分隔（缺省为全部字段）
+     * @param sortField      排序字段
+     * @param highlightField 高亮字段
+     * @return
+     */
+    public static List<Map<String, Object>> searchListData(String index, String type, QueryBuilder query, Integer size, String fields, String sortField, String highlightField) {
+
+        SearchRequestBuilder searchRequestBuilder = client.prepareSearch(index);
+        if (StringUtils.isNotEmpty(type)) {
+            searchRequestBuilder.setTypes(type.split(","));
+        }
+
+        if (StringUtils.isNotEmpty(highlightField)) {
+            HighlightBuilder highlightBuilder = new HighlightBuilder();
+            // 设置高亮字段
+            highlightBuilder.field(highlightField);
+            searchRequestBuilder.highlighter(highlightBuilder);
+        }
+
+        searchRequestBuilder.setQuery(query);
+
+        if (StringUtils.isNotEmpty(fields)) {
+            searchRequestBuilder.setFetchSource(fields.split(","), null);
+        }
+        searchRequestBuilder.setFetchSource(true);
+
+        if (StringUtils.isNotEmpty(sortField)) {
+            searchRequestBuilder.addSort(sortField, SortOrder.DESC);
+        }
+
+        if (size != null && size > 0) {
+            searchRequestBuilder.setSize(size);
+        }
+
+//打印的内容 可以在 Elasticsearch head 和 Kibana  上执行查询
+        LOGGER.info("\n{}", searchRequestBuilder);
+
+        SearchResponse searchResponse = searchRequestBuilder.execute().actionGet();
+
+        long totalHits = searchResponse.getHits().totalHits;
+        long length = searchResponse.getHits().getHits().length;
+
+        LOGGER.info("共查询到[{}]条数据,处理数据条数[{}]", totalHits, length);
+
+        if (searchResponse.status().getStatus() == 200) {
+// 解析对象
+            return setSearchResponse(searchResponse, highlightField);
+        }
+
+        return null;
+
+    }
+
 }
