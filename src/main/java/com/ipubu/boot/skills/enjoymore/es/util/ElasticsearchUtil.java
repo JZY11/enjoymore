@@ -133,4 +133,19 @@ public class ElasticsearchUtil {
         return addData(jsonObject, index, type, UUID.randomUUID().toString().replaceAll("-", "").toUpperCase());
     }
 
+    /**
+     * 通过ID删除数据
+     *
+     * @param index 索引，类似数据库
+     * @param type  类型，类似表
+     * @param id    数据ID
+     */
+    public static void deleteDataById(String index, String type, String id) {
+
+        DeleteResponse response = client.prepareDelete(index, type, id).execute().actionGet();
+
+        LOGGER.info("deleteDataById response status:{},id:{}", response.status().getStatus(), response.getId());
+    }
+
+
 }
