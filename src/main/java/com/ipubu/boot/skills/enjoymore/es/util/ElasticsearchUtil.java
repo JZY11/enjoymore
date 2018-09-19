@@ -166,4 +166,26 @@ public class ElasticsearchUtil {
 
     }
 
+    /**
+     * 通过ID获取数据
+     *
+     * @param index  索引，类似数据库
+     * @param type   类型，类似表
+     * @param id     数据ID
+     * @param fields 需要显示的字段，逗号分隔（缺省为全部字段）
+     * @return
+     */
+    public static Map<String, Object> searchDataById(String index, String type, String id, String fields) {
+
+        GetRequestBuilder getRequestBuilder = client.prepareGet(index, type, id);
+
+        if (StringUtils.isNotEmpty(fields)) {
+            getRequestBuilder.setFetchSource(fields.split(","), null);
+        }
+
+        GetResponse getResponse = getRequestBuilder.execute().actionGet();
+
+        return getResponse.getSource();
+    }
+
 }
