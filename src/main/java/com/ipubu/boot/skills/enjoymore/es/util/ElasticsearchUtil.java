@@ -188,4 +188,77 @@ public class ElasticsearchUtil {
         return getResponse.getSource();
     }
 
+
+    /**
+     * 使用分词查询,并分页
+     *
+     * @param index          索引名称
+     * @param type           类型名称,可传入多个type逗号分隔
+     * @param startPage      当前页
+     * @param pageSize       每页显示条数
+     * @param query          查询条件
+     * @param fields         需要显示的字段，逗号分隔（缺省为全部字段）
+     * @param sortField      排序字段
+     * @param highlightField 高亮字段
+     * @return
+     */
+    public static EsPage searchDataPage(String index, String type, int startPage, int pageSize, QueryBuilder query, String fields, String sortField, String highlightField) {
+        SearchRequestBuilder searchRequestBuilder = client.prepareSearch(index);
+        if (StringUtils.isNotEmpty(type)) {
+            searchRequestBuilder.setTypes(type.split(","));
+        }
+        searchRequestBuilder.setSearchType(SearchType.QUERY_THEN_FETCH);
+
+        // 需要显示的字段，逗号分隔（缺省为全部字段）
+        if (StringUtils.isNotEmpty(fields)) {
+            searchRequestBuilder.setFetchSource(fields.split(","), null);
+        }
+
+        //排序字段
+        if (StringUtils.isNotEmpty(sortField)) {
+            searchRequestBuilder.addSort(sortField, SortOrder.DESC);
+        }
+
+        // 高亮（xxx=111,aaa=222）
+        if (StringUtils.isNotEmpty(highlightField)) {
+            HighlightBuilder highlightBuilder = new HighlightBuilder();
+
+            //highlightBuilder.preTags("<span style='color:red' >");//设置前缀
+            //highlightBuilder.postTags("</span>");//设置后缀
+
+            // 设置高亮字段
+            highlightBuilder.field(highlightField);
+            searchRequestBuilder.highlighter(highlightBuilder);
+        }
+
+        searchRequestBuilder.setQuery(query);
+
+        // 分页应用
+        searchRequestBuilder.setFrom(startPage).setSize(pageSize);
+
+        // 设置是否按查询匹配度排序
+        searchRequestBuilder.setExplain(true);
+
+        //打印的内容 可以在 Elasticsearch head 和 Kibana  上执行查询
+        LOGGER.info("\n{}", searchRequestBuilder);
+
+        // 执行搜索,返回搜索响应信息
+        SearchResponse searchResponse = searchRequestBuilder.execute().actionGet();
+
+        long totalHits = searchResponse.getHits().totalHits;
+        long length = searchResponse.getHits().getHits().length;
+
+        LOGGER.debug("共查询到[{}]条数据,处理数据条数[{}]", totalHits, length);
+
+        if (searchResponse.status().getStatus() == 200) {
+// 解析对象
+            List<Map<String, Object>> sourceList = setSearchResponse(searchResponse, highlightField);
+
+            return new EsPage(startPage, pageSize, (int) totalHits, sourceList);
+        }
+
+        return null;
+
+    }
+
 }
