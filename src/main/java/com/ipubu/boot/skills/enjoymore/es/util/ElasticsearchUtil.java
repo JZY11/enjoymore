@@ -147,5 +147,23 @@ public class ElasticsearchUtil {
         LOGGER.info("deleteDataById response status:{},id:{}", response.status().getStatus(), response.getId());
     }
 
+    /**
+     * 通过ID 更新数据
+     *
+     * @param jsonObject 要增加的数据
+     * @param index      索引，类似数据库
+     * @param type       类型，类似表
+     * @param id         数据ID
+     * @return
+     */
+    public static void updateDataById(JSONObject jsonObject, String index, String type, String id) {
+
+        UpdateRequest updateRequest = new UpdateRequest();
+
+        updateRequest.index(index).type(type).id(id).doc(jsonObject);
+
+        client.update(updateRequest);
+
+    }
 
 }
