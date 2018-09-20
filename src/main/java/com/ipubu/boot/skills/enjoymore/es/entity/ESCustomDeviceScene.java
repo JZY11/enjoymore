@@ -9,6 +9,8 @@ public class ESCustomDeviceScene implements Serializable{
     private String beforeModifyDeviceName;
     /** 修改后场景名称 */
     private String afterModifyDeviceName;
+    /** 设备类型名称 */
+    private String deviceTypeName;
 
 
     public String getBeforeModifyDeviceName() {
@@ -25,5 +27,13 @@ public class ESCustomDeviceScene implements Serializable{
 
     public void setAfterModifyDeviceName(String afterModifyDeviceName) {
         this.afterModifyDeviceName = afterModifyDeviceName;
+    }
+
+    public String getDeviceTypeName() {
+        return deviceTypeName;
+    }
+
+    public void setDeviceTypeName(String deviceTypeName) {
+        this.deviceTypeName = deviceTypeName;
     }
 }
