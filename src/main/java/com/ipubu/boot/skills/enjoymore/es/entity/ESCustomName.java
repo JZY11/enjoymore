@@ -16,6 +16,8 @@ public class ESCustomName implements Serializable{
     private String category;
     /**原始名称*/
     private String originalName;
+    /**修改后的名称*/
+    private String afterModifyName;
 
     public String getUserId() {
         return userId;
@@ -39,5 +41,13 @@ public class ESCustomName implements Serializable{
 
     public void setOriginalName(String originalName) {
         this.originalName = originalName;
+    }
+
+    public String getAfterModifyName() {
+        return afterModifyName;
+    }
+
+    public void setAfterModifyName(String afterModifyName) {
+        this.afterModifyName = afterModifyName;
     }
 }
